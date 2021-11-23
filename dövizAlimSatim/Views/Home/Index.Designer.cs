@@ -146,7 +146,7 @@ namespace CurrencyTransactions
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.DisabledLinkColor = System.Drawing.Color.Transparent;
             this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(147, 372);
+            this.linkLabel1.Location = new System.Drawing.Point(148, 372);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(51, 17);
             this.linkLabel1.TabIndex = 12;
@@ -174,6 +174,7 @@ namespace CurrencyTransactions
             this.btngiris.TabIndex = 14;
             this.btngiris.Text = "Giriş";
             this.btngiris.UseVisualStyleBackColor = false;
+            this.btngiris.Click += new System.EventHandler(this.btngiris_Click);
             // 
             // Index
             // 

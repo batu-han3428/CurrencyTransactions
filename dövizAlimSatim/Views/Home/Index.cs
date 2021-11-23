@@ -1,5 +1,6 @@
 ﻿using dövizAlimSatim.DTO;
 using dövizAlimSatim.Methods;
+using dövizAlimSatim.Views.Account;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,14 @@ namespace CurrencyTransactions
             lbldolar.Text = result.Dollar.SellingPrice+"TL";
             lbleuro.Text = result.Euro.SellingPrice+"TL";
             lblaltin.Text = result.GramGold.SellingPrice+"TL";
+        }
+
+        private void btngiris_Click(object sender, EventArgs e)
+        {
+            Login frm = new Login();
+            frm.Show();
+            this.Hide();
+            
         }
     }
 }
