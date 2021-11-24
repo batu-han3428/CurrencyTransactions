@@ -16,5 +16,10 @@ namespace dövizAlimSatim.Views.Account
         {
             InitializeComponent();
         }
+
+        private void btngiris_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

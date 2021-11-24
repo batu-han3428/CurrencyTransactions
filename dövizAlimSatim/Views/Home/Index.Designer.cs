@@ -157,7 +157,7 @@ namespace CurrencyTransactions
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(153, 347);
+            this.label2.Location = new System.Drawing.Point(154, 347);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 17);
             this.label2.TabIndex = 13;
