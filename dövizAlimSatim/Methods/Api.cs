@@ -16,15 +16,24 @@ namespace dövizAlimSatim.Methods
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             IRestResponse response = await client.ExecuteAsync(request);
-     
-            return Json_Convert<T>.deserializeProcess(response);
+            
+            return Json_Convert<T>.deserializeProcess(apiFormat(response.Content));
         }
 
-        public static string apiFormat(IRestResponse response)
+        public static string apiFormat(string response)
         {
-            var result = response.Content.Replace("\\", "");
+            var result = response.Replace("\\", "");
             return result.Substring(1, result.Length - 2);
         }
 
+        public async static Task<string> pushDataAsync(string url, T user)
+        {
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST) { RequestFormat = DataFormat.Json };
+            request.AddJsonBody(user);
+            IRestResponse response = await client.ExecuteAsync(request);
+
+            return response.Content;
+        }
     }
 }

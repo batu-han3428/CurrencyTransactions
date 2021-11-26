@@ -10,9 +10,10 @@ namespace dövizAlimSatim.Methods
 {
     public class Json_Convert<T> where T : class
     {
-        public static T deserializeProcess(IRestResponse response)
+
+        public static T deserializeProcess(string response)
         {
-            return JsonSerializer.Deserialize<T>(Api<T>.apiFormat(response));
+            return JsonSerializer.Deserialize<T>(response);
         }
     }
 }

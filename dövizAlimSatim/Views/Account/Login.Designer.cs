@@ -29,17 +29,16 @@ namespace dövizAlimSatim.Views.Account
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.grplogin = new System.Windows.Forms.GroupBox();
+            this.lblwarning = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btngiris = new System.Windows.Forms.Button();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.grplogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -47,6 +46,7 @@ namespace dövizAlimSatim.Views.Account
             // grplogin
             // 
             this.grplogin.BackColor = System.Drawing.Color.Transparent;
+            this.grplogin.Controls.Add(this.lblwarning);
             this.grplogin.Controls.Add(this.linkLabel1);
             this.grplogin.Controls.Add(this.pictureBox1);
             this.grplogin.Controls.Add(this.btngiris);
@@ -64,6 +64,30 @@ namespace dövizAlimSatim.Views.Account
             this.grplogin.TabStop = false;
             this.grplogin.Text = "Giriş";
             // 
+            // lblwarning
+            // 
+            this.lblwarning.AutoSize = true;
+            this.lblwarning.BackColor = System.Drawing.Color.Transparent;
+            this.lblwarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblwarning.Location = new System.Drawing.Point(9, 35);
+            this.lblwarning.Name = "lblwarning";
+            this.lblwarning.Size = new System.Drawing.Size(0, 20);
+            this.lblwarning.TabIndex = 19;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.DisabledLinkColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
+            this.linkLabel1.Location = new System.Drawing.Point(98, 289);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(127, 20);
+            this.linkLabel1.TabIndex = 18;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Şifremi unuttum";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -75,6 +99,7 @@ namespace dövizAlimSatim.Views.Account
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btngiris
             // 
@@ -96,6 +121,7 @@ namespace dövizAlimSatim.Views.Account
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.Size = new System.Drawing.Size(188, 27);
             this.txtpassword.TabIndex = 14;
+            this.txtpassword.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -129,26 +155,6 @@ namespace dövizAlimSatim.Views.Account
             this.label1.TabIndex = 11;
             this.label1.Text = "E-Mail:";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.DisabledLinkColor = System.Drawing.Color.Transparent;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(98, 289);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(127, 20);
-            this.linkLabel1.TabIndex = 18;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Şifremi unuttum";
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -177,9 +183,9 @@ namespace dövizAlimSatim.Views.Account
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtmail;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btngiris;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label lblwarning;
     }
 }
