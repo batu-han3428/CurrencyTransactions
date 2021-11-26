@@ -67,5 +67,12 @@ namespace CurrencyTransactions
             this.Hide();
             
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Register frm = new Register();
+            frm.Show();
+            this.Hide();
+        }
     }
 }

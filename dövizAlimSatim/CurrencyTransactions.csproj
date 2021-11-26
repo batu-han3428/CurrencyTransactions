@@ -83,12 +83,19 @@
     <Compile Include="DTO\Doviz.cs" />
     <Compile Include="DTO\DovizAltElements.cs" />
     <Compile Include="DTO\Login\LoginDTO.cs" />
+    <Compile Include="DTO\Register\RegisterDTO.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="Views\Account\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Account\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Account\Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Account\Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\Index.cs">
       <SubType>Form</SubType>
@@ -101,6 +108,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Views\Account\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Account\Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Home\Index.resx">
       <DependentUpon>Index.cs</DependentUpon>

@@ -29,6 +29,7 @@ namespace dövizAlimSatim.Views.Account
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.grplogin = new System.Windows.Forms.GroupBox();
             this.lblwarning = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@ namespace dövizAlimSatim.Views.Account
             this.label2 = new System.Windows.Forms.Label();
             this.txtmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grplogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -99,6 +101,7 @@ namespace dövizAlimSatim.Views.Account
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Geri");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btngiris
@@ -187,5 +190,6 @@ namespace dövizAlimSatim.Views.Account
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label lblwarning;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
