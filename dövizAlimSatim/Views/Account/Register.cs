@@ -1,4 +1,5 @@
 ﻿using CurrencyTransactions;
+using dövizAlimSatim.DTO.Register;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,14 @@ namespace dövizAlimSatim.Views.Account
 {
     public partial class Register : Form
     {
+        private RegisterDTO register;
+
         public Register()
         {
             InitializeComponent();
+            register = new RegisterDTO();
         }
-
+       
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
             
@@ -32,7 +36,37 @@ namespace dövizAlimSatim.Views.Account
 
         private void btnkayit_Click(object sender, EventArgs e)
         {
-           
+            lblwarning.Text = "";
+            string name = "";
+
+            foreach (var item in grpregister.Controls)
+            {
+                if (item is TextBox)
+                {
+                    if (((TextBox)item).Text == "")
+                    {
+                        name = ((TextBox)item).Name;
+                        lblwarning.Text += "● '" + name + "' Alanı Boş Geçilemez..\n";
+                    }
+                }                   
+            }
+
+            if (name =="")
+            {
+                if (Parola.Text == TParola.Text)
+                {
+                    register.ad = Ad.Text;
+                    register.soyad = Soyad.Text;
+                    register.mail = Mail.Text;
+                    register.tc = TC.Text;
+                    register.parola = Parola.Text;
+                }
+                else
+                {
+                    lblwarning.Text = "● Parola - TParola Alanı Aynı Olmak Zorunda..";
+                }
+            }
+
         }
 
         private void Register_Load(object sender, EventArgs e)

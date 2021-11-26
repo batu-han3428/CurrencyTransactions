@@ -12,7 +12,6 @@ namespace dövizAlimSatim.DTO.Register
         public string soyad { get; set; }
         public string mail { get; set; }
         public string parola { get; set; }
-        public string parolaTekrar { get; set; }
         public string tc { get; set; }
     }
 }
