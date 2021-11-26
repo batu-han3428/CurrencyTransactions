@@ -37,5 +37,25 @@ namespace Api.Controllers
                 return BadRequest(userDTO);
             }                      
         }
+
+        [HttpPost("register")]
+        public IActionResult register(Register registerDTO)
+        {
+            if (registerDTO != null)
+            {
+                User user = new User();
+                user.ad = registerDTO.ad;
+                user.soyad = registerDTO.soyad;
+                user.mail = registerDTO.mail;
+                user.parola = registerDTO.parola;
+                user.tc = registerDTO.tc;
+
+                return Ok(_accountServices.register(user));
+            }
+            else
+            {
+                return BadRequest(registerDTO);
+            }
+        }
     }
 }

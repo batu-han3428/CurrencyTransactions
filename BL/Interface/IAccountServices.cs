@@ -10,5 +10,6 @@ namespace BL.Interface
     public interface IAccountServices
     {
         string login(User user);
+        string register(User user);
     }
 }

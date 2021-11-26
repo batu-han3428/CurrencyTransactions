@@ -52,8 +52,13 @@ namespace Domain.Contexts
                 }
                 else
                 {
+                    SqlParameter output = new SqlParameter("@outputData", SqlDbType.NVarChar,-1)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(output);
                     cmd.ExecuteNonQuery();
-
+                    result = (string)output.Value;
                 }
                
                 sqlConnection.Close();

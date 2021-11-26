@@ -10,6 +10,6 @@ namespace DAL.Interface
     public interface IAccountRepository
     {
         string login(User user);
-        
+        string register(User user);
     }
 }

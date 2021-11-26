@@ -1,5 +1,7 @@
 ﻿using CurrencyTransactions;
 using dövizAlimSatim.DTO.Register;
+using dövizAlimSatim.Methods;
+using dövizAlimSatim.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,11 +36,55 @@ namespace dövizAlimSatim.Views.Account
             this.Close();
         }
 
-        private void btnkayit_Click(object sender, EventArgs e)
+        private async void btnkayit_Click(object sender, EventArgs e)
         {
             lblwarning.Text = "";
             string name = "";
 
+            name = inputDataControl(name);
+
+
+            if (name == "")
+            {
+                if (Parola.Text == TParola.Text)
+                {
+                    register.ad = Ad.Text;
+                    register.soyad = Soyad.Text;
+                    register.mail = Mail.Text;
+                    register.tc = TC.Text;
+                    register.parola = Parola.Text;
+
+                    var result = await Api<RegisterDTO>.pushDataAsync("https://localhost:44391/api/Account/register", register);  
+
+                    var loginUser = Json_Convert<KayitliHesap>.deserializeProcess(Api<KayitliHesap>.apiFormat(result));
+
+                    if (loginUser.mail == 1 && loginUser.tc == 1)
+                    {
+                        lblwarning.Text = "Mail ve Tc Zaten Kayıtlı..";
+                    }else if (loginUser.mail == 1)
+                    {
+                        lblwarning.Text = "Mail Adresi Kayıtlı..";
+                    }else if (loginUser.tc == 1)
+                    {
+                        lblwarning.Text = "Tc Adresi Kayıtlı..";
+                    }else
+                    {
+                        MessageBox.Show("Kayıt Başarılı");
+                        Index frm = new Index();
+                        frm.Show();
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    lblwarning.Text = "● Parola - TParola Alanı Aynı Olmak Zorunda..";
+                }
+            }
+
+        }
+
+        private string inputDataControl(string name)
+        {
             foreach (var item in grpregister.Controls)
             {
                 if (item is TextBox)
@@ -48,25 +94,10 @@ namespace dövizAlimSatim.Views.Account
                         name = ((TextBox)item).Name;
                         lblwarning.Text += "● '" + name + "' Alanı Boş Geçilemez..\n";
                     }
-                }                   
-            }
-
-            if (name =="")
-            {
-                if (Parola.Text == TParola.Text)
-                {
-                    register.ad = Ad.Text;
-                    register.soyad = Soyad.Text;
-                    register.mail = Mail.Text;
-                    register.tc = TC.Text;
-                    register.parola = Parola.Text;
-                }
-                else
-                {
-                    lblwarning.Text = "● Parola - TParola Alanı Aynı Olmak Zorunda..";
                 }
             }
 
+            return name;
         }
 
         private void Register_Load(object sender, EventArgs e)

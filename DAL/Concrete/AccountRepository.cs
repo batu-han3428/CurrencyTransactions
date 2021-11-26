@@ -22,5 +22,10 @@ namespace DAL.Concrete
         {         
             return context.takeAction(user, "login", processType.Select);
         }
+
+        public string register(User user)
+        {          
+            return context.takeAction(user, "register", processType.Insert); ;
+        }
     }
 }

@@ -83,6 +83,7 @@
     <Compile Include="DTO\Doviz.cs" />
     <Compile Include="DTO\DovizAltElements.cs" />
     <Compile Include="DTO\Login\LoginDTO.cs" />
+    <Compile Include="DTO\Register\KayitliHesap.cs" />
     <Compile Include="DTO\Register\RegisterDTO.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="Views\Account\Login.cs">

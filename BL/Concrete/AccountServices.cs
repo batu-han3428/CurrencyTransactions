@@ -17,6 +17,7 @@ namespace BL.Concrete
         {
             _AccountRepository = AccountRepository;
         }
+
         public string login(User user)
         {
             string result = _AccountRepository.login(user);
@@ -30,6 +31,11 @@ namespace BL.Concrete
                 return result;
             }
              
+        }
+        public string register(User user)
+        {
+            
+            return _AccountRepository.register(user);
         }
     }
 }
