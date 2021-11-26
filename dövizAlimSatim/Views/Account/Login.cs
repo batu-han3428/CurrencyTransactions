@@ -48,7 +48,16 @@ namespace dövizAlimSatim.Views.Account
                 {
                     var loginUser = Json_Convert<User>.deserializeProcess(Api<User>.apiFormat(result));
 
-                   
+                    Index frm = new Index();
+                    frm.user.id = loginUser.id;
+                    frm.user.ad = loginUser.ad;
+                    frm.user.soyad = loginUser.soyad;
+                    frm.user.mail = loginUser.mail;
+                    frm.user.parola = loginUser.parola;
+                    frm.user.kayitTarihi = loginUser.kayitTarihi;
+                    frm.user.tc = loginUser.tc;
+                    frm.Show();
+                    this.Close();
                 }
             }
         }

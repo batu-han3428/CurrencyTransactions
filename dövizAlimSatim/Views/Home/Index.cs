@@ -1,5 +1,6 @@
 ﻿using dövizAlimSatim.DTO;
 using dövizAlimSatim.Methods;
+using dövizAlimSatim.ViewModels;
 using dövizAlimSatim.Views.Account;
 using RestSharp;
 using System;
@@ -18,16 +19,19 @@ namespace CurrencyTransactions
 {
     public partial class Index : Form
     {
+        public User user;
         public Index()
         {
+            user = new User();
             InitializeComponent();
         }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
             timer1_Tick(sender, e);
             timer1.Enabled = true;
-            timerInterval(40000);        
+            timerInterval(40000);
         }
       
         private async void timer1_Tick(object sender, EventArgs e)
