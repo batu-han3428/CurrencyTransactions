@@ -57,7 +57,7 @@ namespace dövizAlimSatim.Views.Account
                     frm.user.kayitTarihi = loginUser.kayitTarihi;
                     frm.user.tc = loginUser.tc;
                     frm.Show();
-                    this.Close();
+                    Close();
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace dövizAlimSatim.Views.Account
         {
             Index frm = new Index();
             frm.Show();
-            this.Close();
+            Close();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

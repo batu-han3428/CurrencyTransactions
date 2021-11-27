@@ -19,7 +19,7 @@ namespace dövizAlimSatim.Methods
             mailMessage.IsBodyHtml = true;
 
             SmtpClient client = new SmtpClient();
-            client.Credentials = new System.Net.NetworkCredential("bticaret01@gmail.com", "");
+            client.Credentials = new System.Net.NetworkCredential("bticaret01@gmail.com", "Proje3434.");
             client.Host = "smtp.gmail.com";
             client.Port = 587;
             client.EnableSsl = true;

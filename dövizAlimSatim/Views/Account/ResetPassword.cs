@@ -17,6 +17,9 @@ namespace dövizAlimSatim.Views.Account
     {
         private resetPassword resetPassword;
         private int sayac = 301;
+        private resetPasswordResponce1 resetPasswordMail;
+        private string mailAdress;
+
         public ResetPassword()
         {
             InitializeComponent();
@@ -49,7 +52,7 @@ namespace dövizAlimSatim.Views.Account
 
                 var result = await Api<resetPassword>.pushDataAsync("https://localhost:44391/api/Account/resetPassword", resetPassword);
 
-                var resetPasswordMail = Json_Convert<resetPasswordResponce1>.deserializeProcess(Api<resetPasswordResponce1>.apiFormat(result));
+                resetPasswordMail = Json_Convert<resetPasswordResponce1>.deserializeProcess(Api<resetPasswordResponce1>.apiFormat(result));
 
                 if (resetPasswordMail.mail == 0)
                 {
@@ -62,26 +65,17 @@ namespace dövizAlimSatim.Views.Account
 
                     if (resetPasswordMail.mail == 1 || resetPasswordMail.mail == 3)
                     {
-
                         StringBuilder mailbuilder = new StringBuilder();
-                        mailbuilder.Append("<html>");
-                        mailbuilder.Append("<head>");
-                        mailbuilder.Append("<meta charset=" + "utf-8" + "/>");
-                        mailbuilder.Append("<title>Şifre Sıfırlama</title>");
-                        mailbuilder.Append("</head>");
-                        mailbuilder.Append("<body>");
-                        mailbuilder.Append("Aşağıdaki kod ile şifrenizi sıfırlaya bilirsiniz..");
-                        mailbuilder.AppendLine();
-                        mailbuilder.AppendLine($"<b>Sıfırlama kodu:{resetPasswordMail.resetCode}</b>");
-                        mailbuilder.Append("</body>");
-                        mailbuilder.Append("</html>");
+                        mailbuilder = mailContent(mailbuilder);
 
                         EmailHelper helper = new EmailHelper();
                         bool isSend = helper.SendEmail(txtmail.Text, mailbuilder.ToString());
 
                         if (isSend)
                         {
-                            
+                            mailAdress = txtmail.Text;
+                            btnnewpassword.Enabled = true;
+                            txtresetcode.Enabled = true;
                             lblwarning.Text = "● Sıfırlama kodu mail adresinize gönderildi..";
                         }
                         else {
@@ -92,6 +86,8 @@ namespace dövizAlimSatim.Views.Account
                     }
                     else if (resetPasswordMail.mail == 2)
                     {
+                        btnnewpassword.Enabled = true;
+                        txtresetcode.Enabled = true;
                         lblwarning.Text = "● 5dk. dolmadan yeni kod alamazsınız..";
                     }
                 } 
@@ -127,6 +123,43 @@ namespace dövizAlimSatim.Views.Account
         private void grpresetpassword_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnnewpassword_Click(object sender, EventArgs e)
+        {
+            lblwarning.Text = "";
+
+            if (txtresetcode.Text != "")
+            {
+                if (txtresetcode.Text == resetPasswordMail.resetCode.ToString())
+                {
+                    NewPassword frm = new NewPassword();
+                    frm.userMail = mailAdress;
+                    frm.Show();
+                    Close();                  
+                }
+            }
+            else
+            {
+                lblwarning.Text = "● Kod alanı boş geçilemez..";
+            }
+        }
+
+        private StringBuilder mailContent(StringBuilder mailbuilder)
+        {
+            
+            mailbuilder.Append("<html>");
+            mailbuilder.Append("<head>");
+            mailbuilder.Append("<meta charset=" + "utf-8" + "/>");
+            mailbuilder.Append("<title>Şifre Sıfırlama</title>");
+            mailbuilder.Append("</head>");
+            mailbuilder.Append("<body>");
+            mailbuilder.Append("Aşağıdaki kod ile şifrenizi sıfırlaya bilirsiniz.");
+            mailbuilder.Append($"\n\n<b>Sıfırlama kodu: {resetPasswordMail.resetCode}</b>");
+            mailbuilder.Append("</body>");
+            mailbuilder.Append("</html>");
+
+            return mailbuilder;
         }
     }
 }

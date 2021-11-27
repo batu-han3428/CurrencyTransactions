@@ -32,5 +32,10 @@ namespace DAL.Concrete
         {            
             return context.takeAction(user, "resetPassword", processType.Insert);
         }
+
+        public string newPassword(User user)
+        {
+            return context.takeAction(user, "newPassword", processType.Update);
+        }
     }
 }

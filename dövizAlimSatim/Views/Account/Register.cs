@@ -76,7 +76,7 @@ namespace dövizAlimSatim.Views.Account
                         MessageBox.Show("Kayıt Başarılı");
                         Index frm = new Index();
                         frm.Show();
-                        this.Close();
+                        Close();
                     }
                 }
                 else

@@ -43,5 +43,10 @@ namespace BL.Concrete
         {
             return _AccountRepository.resetPassword(user);
         }
+
+        public string newPassword(User user)
+        {
+            return _AccountRepository.newPassword(user);
+        }
     }
 }
