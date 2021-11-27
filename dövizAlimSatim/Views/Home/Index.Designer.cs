@@ -33,7 +33,7 @@ namespace CurrencyTransactions
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Index));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.grpkur = new System.Windows.Forms.GroupBox();
-            this.lblaltin = new System.Windows.Forms.Label();
+            this.lblsterlin = new System.Windows.Forms.Label();
             this.lbleuro = new System.Windows.Forms.Label();
             this.lbldolar = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@ namespace CurrencyTransactions
             // grpkur
             // 
             this.grpkur.BackColor = System.Drawing.Color.Transparent;
-            this.grpkur.Controls.Add(this.lblaltin);
+            this.grpkur.Controls.Add(this.lblsterlin);
             this.grpkur.Controls.Add(this.lbleuro);
             this.grpkur.Controls.Add(this.lbldolar);
             this.grpkur.Controls.Add(this.label5);
@@ -68,17 +68,17 @@ namespace CurrencyTransactions
             this.grpkur.TabStop = false;
             this.grpkur.Text = "Kurlar";
             // 
-            // lblaltin
+            // lblsterlin
             // 
-            this.lblaltin.AutoSize = true;
-            this.lblaltin.BackColor = System.Drawing.Color.Transparent;
-            this.lblaltin.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblaltin.ForeColor = System.Drawing.Color.White;
-            this.lblaltin.Location = new System.Drawing.Point(152, 154);
-            this.lblaltin.Name = "lblaltin";
-            this.lblaltin.Size = new System.Drawing.Size(141, 19);
-            this.lblaltin.TabIndex = 16;
-            this.lblaltin.Text = "Yükleniyor..";
+            this.lblsterlin.AutoSize = true;
+            this.lblsterlin.BackColor = System.Drawing.Color.Transparent;
+            this.lblsterlin.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblsterlin.ForeColor = System.Drawing.Color.White;
+            this.lblsterlin.Location = new System.Drawing.Point(152, 154);
+            this.lblsterlin.Name = "lblsterlin";
+            this.lblsterlin.Size = new System.Drawing.Size(141, 19);
+            this.lblsterlin.TabIndex = 16;
+            this.lblsterlin.Text = "Yükleniyor..";
             // 
             // lbleuro
             // 
@@ -112,9 +112,9 @@ namespace CurrencyTransactions
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(37, 146);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 30);
+            this.label5.Size = new System.Drawing.Size(109, 30);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Altın:";
+            this.label5.Text = "Pound:";
             // 
             // label4
             // 
@@ -207,7 +207,7 @@ namespace CurrencyTransactions
         #endregion
 
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label lblaltin;
+        private System.Windows.Forms.Label lblsterlin;
         private System.Windows.Forms.Label lbleuro;
         private System.Windows.Forms.Label lbldolar;
         private System.Windows.Forms.Label label5;

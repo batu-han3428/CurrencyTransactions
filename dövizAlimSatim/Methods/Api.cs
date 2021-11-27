@@ -17,7 +17,7 @@ namespace dövizAlimSatim.Methods
             var request = new RestRequest(Method.GET);
             IRestResponse response = await client.ExecuteAsync(request);
             
-            return Json_Convert<T>.deserializeProcess(apiFormat(response.Content));
+            return Json_Convert<T>.deserializeProcess(response.Content);
         }
 
         public static string apiFormat(string response)

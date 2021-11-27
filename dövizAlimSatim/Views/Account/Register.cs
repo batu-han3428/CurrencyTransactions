@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace dövizAlimSatim.Views.Account
 {
@@ -48,11 +49,14 @@ namespace dövizAlimSatim.Views.Account
             {
                 if (Parola.Text == TParola.Text)
                 {
+                    SHA1 sha = new SHA1CryptoServiceProvider();
+
+                    register.parola = Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(Parola.Text)));
                     register.ad = Ad.Text;
                     register.soyad = Soyad.Text;
                     register.mail = Mail.Text;
                     register.tc = TC.Text;
-                    register.parola = Parola.Text;
+                    
 
                     var result = await Api<RegisterDTO>.pushDataAsync("https://localhost:44391/api/Account/register", register);  
 

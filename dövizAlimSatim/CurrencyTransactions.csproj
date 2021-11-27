@@ -37,6 +37,9 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=106.13.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.13.0\lib\net452\RestSharp.dll</HintPath>
     </Reference>
@@ -85,6 +88,8 @@
     <Compile Include="DTO\Login\LoginDTO.cs" />
     <Compile Include="DTO\Register\KayitliHesap.cs" />
     <Compile Include="DTO\Register\RegisterDTO.cs" />
+    <Compile Include="DTO\yeniDoviz\IcerikDoviz.cs" />
+    <Compile Include="DTO\yeniDoviz\yeniDoviz.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="Views\Account\Login.cs">
       <SubType>Form</SubType>

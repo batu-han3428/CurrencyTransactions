@@ -1,4 +1,5 @@
 ﻿using dövizAlimSatim.DTO;
+using dövizAlimSatim.DTO.yeniDoviz;
 using dövizAlimSatim.Methods;
 using dövizAlimSatim.ViewModels;
 using dövizAlimSatim.Views.Account;
@@ -36,7 +37,7 @@ namespace CurrencyTransactions
       
         private async void timer1_Tick(object sender, EventArgs e)
         {
-            var result = await Api<Doviz>.pullDataAsync("https://cancaliskan-doviz-api.herokuapp.com/");
+            var result = await Api<yeniDoviz>.pullDataAsync("https://finans.truncgil.com/v3/today.json");
 
             labelsDataTransfer(result);
         }
@@ -53,11 +54,11 @@ namespace CurrencyTransactions
             }
         }
         
-        private void labelsDataTransfer(Doviz result)
+        private void labelsDataTransfer(yeniDoviz result)
         {
-            lbldolar.Text = result.Dollar.SellingPrice+"TL";
-            lbleuro.Text = result.Euro.SellingPrice+"TL";
-            lblaltin.Text = result.GramGold.SellingPrice+"TL";
+            lbldolar.Text = result.USD.Selling+"TL";
+            lbleuro.Text = result.EUR.Selling+"TL";
+            lblsterlin.Text = result.GBP.Selling+"TL";
         }
 
         private void btngiris_Click(object sender, EventArgs e)
