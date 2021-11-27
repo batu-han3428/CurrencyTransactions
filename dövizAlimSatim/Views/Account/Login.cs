@@ -68,5 +68,12 @@ namespace dövizAlimSatim.Views.Account
             frm.Show();
             this.Close();
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ResetPassword frm = new ResetPassword();
+            frm.Show();
+            Close();
+        }
     }
 }

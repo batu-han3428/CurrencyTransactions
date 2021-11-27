@@ -32,10 +32,16 @@ namespace BL.Concrete
             }
              
         }
+
         public string register(User user)
         {
             
             return _AccountRepository.register(user);
+        }
+
+        public string resetPassword(User user)
+        {
+            return _AccountRepository.resetPassword(user);
         }
     }
 }

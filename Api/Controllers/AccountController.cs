@@ -57,5 +57,27 @@ namespace Api.Controllers
                 return BadRequest(registerDTO);
             }
         }
+
+        [HttpPost("resetPassword")]
+        public IActionResult resetPassword(resetPassword resetPasswordDTO)
+        {
+            if (resetPasswordDTO != null)
+            {
+                userResetPassword userResetPassword = new userResetPassword();
+                userResetPassword.resetCode = resetPasswordDTO.resetCode;
+                userResetPassword.codeDate = resetPasswordDTO.sendingDate;
+
+                User user = new User();
+                user.mail = resetPasswordDTO.mail;
+                user.UserResetPassword = userResetPassword;
+
+
+                return Ok(_accountServices.resetPassword(user));
+            }
+            else
+            {
+                return BadRequest(resetPasswordDTO);
+            }
+        }
     }
 }

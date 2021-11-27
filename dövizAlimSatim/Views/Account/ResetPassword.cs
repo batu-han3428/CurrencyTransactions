@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CurrencyTransactions;
+using dövizAlimSatim.DTO.resetPassword;
+using dövizAlimSatim.Methods;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,118 @@ namespace dövizAlimSatim.Views.Account
 {
     public partial class ResetPassword : Form
     {
+        private resetPassword resetPassword;
+        private int sayac = 301;
         public ResetPassword()
         {
             InitializeComponent();
+            resetPassword = new resetPassword();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Login frm = new Login();
+            frm.Show();
+            Close();
+        }
+
+        private async void btnpush_Click(object sender, EventArgs e)
+        {
+            lblwarning.Text = "";
+
+            if (txtmail.Text == "")
+            {
+                lblwarning.Text = "● Mail Alanı Boş Geçilemez..";
+            }
+            else
+            {
+                
+                resetPassword.mail = txtmail.Text;
+                resetPassword.resetCode = createResetCode();
+                resetPassword.sendingDate = currentDate();
+
+                btnpush.Enabled = false;
+
+                var result = await Api<resetPassword>.pushDataAsync("https://localhost:44391/api/Account/resetPassword", resetPassword);
+
+                var resetPasswordMail = Json_Convert<resetPasswordResponce1>.deserializeProcess(Api<resetPasswordResponce1>.apiFormat(result));
+
+                if (resetPasswordMail.mail == 0)
+                {
+                    btnpush.Enabled = true;
+                    lblwarning.Text = "● Mail adresi kayıtlı değil..";
+                }
+                else
+                {
+                    timer1.Enabled = true;
+
+                    if (resetPasswordMail.mail == 1 || resetPasswordMail.mail == 3)
+                    {
+
+                        StringBuilder mailbuilder = new StringBuilder();
+                        mailbuilder.Append("<html>");
+                        mailbuilder.Append("<head>");
+                        mailbuilder.Append("<meta charset=" + "utf-8" + "/>");
+                        mailbuilder.Append("<title>Şifre Sıfırlama</title>");
+                        mailbuilder.Append("</head>");
+                        mailbuilder.Append("<body>");
+                        mailbuilder.Append("Aşağıdaki kod ile şifrenizi sıfırlaya bilirsiniz..");
+                        mailbuilder.AppendLine();
+                        mailbuilder.AppendLine($"<b>Sıfırlama kodu:{resetPasswordMail.resetCode}</b>");
+                        mailbuilder.Append("</body>");
+                        mailbuilder.Append("</html>");
+
+                        EmailHelper helper = new EmailHelper();
+                        bool isSend = helper.SendEmail(txtmail.Text, mailbuilder.ToString());
+
+                        if (isSend)
+                        {
+                            
+                            lblwarning.Text = "● Sıfırlama kodu mail adresinize gönderildi..";
+                        }
+                        else {
+                            timer1.Enabled = false;
+                            MessageBox.Show("Mail gönderilemedi");
+                        }
+                        
+                    }
+                    else if (resetPasswordMail.mail == 2)
+                    {
+                        lblwarning.Text = "● 5dk. dolmadan yeni kod alamazsınız..";
+                    }
+                } 
+            }
+        }
+
+        private int createResetCode()
+        {
+            Random rastgele = new Random();
+
+            return rastgele.Next(100000, 1000000);
+        }
+
+        private DateTime currentDate()
+        {
+            return DateTime.Now;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            sayac--;
+            lbltime.Visible = true;
+            lbltime.Text = "● "+sayac+" saniye";
+            if (sayac <= 0)
+            {
+                lbltime.Visible = false;
+                btnpush.Enabled = true;
+                sayac = 301;
+                timer1.Enabled = false;
+            }
+        }
+
+        private void grpresetpassword_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

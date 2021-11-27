@@ -88,8 +88,11 @@
     <Compile Include="DTO\Login\LoginDTO.cs" />
     <Compile Include="DTO\Register\KayitliHesap.cs" />
     <Compile Include="DTO\Register\RegisterDTO.cs" />
+    <Compile Include="DTO\resetPassword\resetPassword.cs" />
+    <Compile Include="DTO\resetPassword\resetPasswordResponce1.cs" />
     <Compile Include="DTO\yeniDoviz\IcerikDoviz.cs" />
     <Compile Include="DTO\yeniDoviz\yeniDoviz.cs" />
+    <Compile Include="Methods\EmailHelper.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="Views\Account\Login.cs">
       <SubType>Form</SubType>
