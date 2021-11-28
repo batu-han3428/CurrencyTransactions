@@ -8,6 +8,8 @@ using System.Text.Json;
 using System.Web.ModelBinding;
 using dövizAlimSatim.Methods;
 using dövizAlimSatim.ViewModels;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace dövizAlimSatim.Views.Account
 {
@@ -34,9 +36,11 @@ namespace dövizAlimSatim.Views.Account
             }
             else
             {
+                SHA1 sha = new SHA1CryptoServiceProvider();
+
                 LoginDTO user = new LoginDTO();
-                user.Mail = txtmail.Text;
-                user.Password = txtpassword.Text;
+                user.Mail = txtmail.Text;               
+                user.Password = Convert.ToBase64String(sha.ComputeHash(Encoding.UTF8.GetBytes(txtpassword.Text)));
 
                 var result = await Api<LoginDTO>.pushDataAsync("https://localhost:44391/api/Account/login", user);           
                 if (result == "\"Mail veya Parola hatalı\"")
