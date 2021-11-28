@@ -15,8 +15,14 @@ namespace dövizAlimSatim.Views.Account
 {
     public partial class Login : Form
     {
+        public balance balance;
+        public currencyTransactions currencyTransactions;
+        public movements movements;
         public Login()
         {
+            balance = new balance();
+            currencyTransactions = new currencyTransactions();
+            movements = new movements();
             InitializeComponent();
         }
 
@@ -52,6 +58,8 @@ namespace dövizAlimSatim.Views.Account
                 {
                     var loginUser = Json_Convert<User>.deserializeProcess(Api<User>.apiFormat(result));
 
+                    map(loginUser);
+
                     Index frm = new Index();
                     frm.user.id = loginUser.id;
                     frm.user.ad = loginUser.ad;
@@ -60,6 +68,11 @@ namespace dövizAlimSatim.Views.Account
                     frm.user.parola = loginUser.parola;
                     frm.user.kayitTarihi = loginUser.kayitTarihi;
                     frm.user.tc = loginUser.tc;
+                    frm.user.balance = balance;
+                    frm.user.balance.movements = movements;
+                    frm.user.balance.movements.currencyTransactions = currencyTransactions;
+
+
                     frm.Show();
                     Close();
                 }
@@ -78,6 +91,27 @@ namespace dövizAlimSatim.Views.Account
             ResetPassword frm = new ResetPassword();
             frm.Show();
             Close();
+        }
+
+        private void map(User loginUser)
+        {
+            balance.userID = loginUser.balance.userID;
+            balance.amount = loginUser.balance.amount;
+
+
+            movements.id = loginUser.balance.movements.id;
+            movements.userID = loginUser.balance.movements.userID;
+            movements.wallet = loginUser.balance.movements.wallet;
+            movements.currency = loginUser.balance.movements.currency;
+            movements.buySell = loginUser.balance.movements.buySell;
+            movements.amount = loginUser.balance.movements.amount;
+            movements.date = loginUser.balance.movements.date;
+
+
+            currencyTransactions.userID = loginUser.balance.movements.currencyTransactions.userID;
+            currencyTransactions.dollar = loginUser.balance.movements.currencyTransactions.dollar;
+            currencyTransactions.euro = loginUser.balance.movements.currencyTransactions.euro;
+            currencyTransactions.pound = loginUser.balance.movements.currencyTransactions.pound;
         }
     }
 }

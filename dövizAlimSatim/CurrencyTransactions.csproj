@@ -94,6 +94,9 @@
     <Compile Include="DTO\yeniDoviz\IcerikDoviz.cs" />
     <Compile Include="DTO\yeniDoviz\yeniDoviz.cs" />
     <Compile Include="Methods\EmailHelper.cs" />
+    <Compile Include="ViewModels\balance.cs" />
+    <Compile Include="ViewModels\currencyTransactions.cs" />
+    <Compile Include="ViewModels\movements.cs" />
     <Compile Include="ViewModels\User.cs" />
     <Compile Include="Views\Account\Login.cs">
       <SubType>Form</SubType>

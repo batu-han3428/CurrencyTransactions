@@ -24,7 +24,9 @@ namespace Domain.Concrete
         public string tc { get; set; }
         [Required]
         public DateTimeOffset kayitTarihi { get; set; }
-
         public virtual userResetPassword UserResetPassword { get; set; }
+        public virtual balance balance { get; set; }
+        public virtual currencyTransactions currencyTransactions { get; set; }
+        public virtual movements movements { get; set; }
     }
 }

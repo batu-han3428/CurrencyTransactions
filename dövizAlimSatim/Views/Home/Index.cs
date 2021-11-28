@@ -112,6 +112,7 @@ namespace CurrencyTransactions
         private void embedData(User user)
         {
             lblwelcome.Text = user.ad;
+            lblbalance.Text = user.balance.amount + "TL";
         }
     }
 }

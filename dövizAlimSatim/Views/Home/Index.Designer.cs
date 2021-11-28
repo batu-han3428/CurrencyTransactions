@@ -46,16 +46,17 @@ namespace CurrencyTransactions
             this.pctrbxunlogin = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.grptrade = new System.Windows.Forms.GroupBox();
+            this.btnwallet = new System.Windows.Forms.Button();
             this.btnaccountmovement = new System.Windows.Forms.Button();
             this.btninvestments = new System.Windows.Forms.Button();
             this.lblbalance = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnprocess = new System.Windows.Forms.Button();
             this.txtquantity = new System.Windows.Forms.TextBox();
             this.rbtnsell = new System.Windows.Forms.RadioButton();
             this.rbtnbuy = new System.Windows.Forms.RadioButton();
             this.cmbxcurrency = new System.Windows.Forms.ComboBox();
             this.lblwelcome = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.grpkur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxunlogin)).BeginInit();
             this.grptrade.SuspendLayout();
@@ -224,10 +225,11 @@ namespace CurrencyTransactions
             // grptrade
             // 
             this.grptrade.BackColor = System.Drawing.Color.Transparent;
+            this.grptrade.Controls.Add(this.linkLabel2);
+            this.grptrade.Controls.Add(this.btnwallet);
             this.grptrade.Controls.Add(this.btnaccountmovement);
             this.grptrade.Controls.Add(this.btninvestments);
             this.grptrade.Controls.Add(this.lblbalance);
-            this.grptrade.Controls.Add(this.label3);
             this.grptrade.Controls.Add(this.btnprocess);
             this.grptrade.Controls.Add(this.txtquantity);
             this.grptrade.Controls.Add(this.rbtnsell);
@@ -244,12 +246,24 @@ namespace CurrencyTransactions
             this.grptrade.Text = "Kolay Al/Sat";
             this.grptrade.Visible = false;
             // 
+            // btnwallet
+            // 
+            this.btnwallet.BackColor = System.Drawing.Color.Transparent;
+            this.btnwallet.Font = new System.Drawing.Font("Yu Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnwallet.ForeColor = System.Drawing.Color.Brown;
+            this.btnwallet.Location = new System.Drawing.Point(195, 83);
+            this.btnwallet.Name = "btnwallet";
+            this.btnwallet.Size = new System.Drawing.Size(113, 24);
+            this.btnwallet.TabIndex = 22;
+            this.btnwallet.Text = "Cüzdan";
+            this.btnwallet.UseVisualStyleBackColor = false;
+            // 
             // btnaccountmovement
             // 
             this.btnaccountmovement.BackColor = System.Drawing.Color.Transparent;
             this.btnaccountmovement.Font = new System.Drawing.Font("Yu Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnaccountmovement.ForeColor = System.Drawing.Color.Brown;
-            this.btnaccountmovement.Location = new System.Drawing.Point(196, 128);
+            this.btnaccountmovement.Location = new System.Drawing.Point(195, 141);
             this.btnaccountmovement.Name = "btnaccountmovement";
             this.btnaccountmovement.Size = new System.Drawing.Size(112, 49);
             this.btnaccountmovement.TabIndex = 21;
@@ -261,7 +275,7 @@ namespace CurrencyTransactions
             this.btninvestments.BackColor = System.Drawing.Color.Transparent;
             this.btninvestments.Font = new System.Drawing.Font("Yu Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btninvestments.ForeColor = System.Drawing.Color.Brown;
-            this.btninvestments.Location = new System.Drawing.Point(196, 97);
+            this.btninvestments.Location = new System.Drawing.Point(195, 112);
             this.btninvestments.Name = "btninvestments";
             this.btninvestments.Size = new System.Drawing.Size(113, 24);
             this.btninvestments.TabIndex = 20;
@@ -274,24 +288,11 @@ namespace CurrencyTransactions
             this.lblbalance.BackColor = System.Drawing.Color.Transparent;
             this.lblbalance.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblbalance.ForeColor = System.Drawing.Color.White;
-            this.lblbalance.Location = new System.Drawing.Point(258, 55);
+            this.lblbalance.Location = new System.Drawing.Point(222, 55);
             this.lblbalance.Name = "lblbalance";
             this.lblbalance.Size = new System.Drawing.Size(55, 14);
             this.lblbalance.TabIndex = 19;
             this.lblbalance.Text = "Bakiye";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(192, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 14);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Cüzdan:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnprocess
             // 
@@ -365,6 +366,20 @@ namespace CurrencyTransactions
             this.lblwelcome.Text = "Hoşgeldin";
             this.lblwelcome.Visible = false;
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel2.DisabledLinkColor = System.Drawing.Color.Transparent;
+            this.linkLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.linkLabel2.LinkColor = System.Drawing.Color.White;
+            this.linkLabel2.Location = new System.Drawing.Point(220, 26);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(66, 20);
+            this.linkLabel2.TabIndex = 23;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Cüzdan";
+            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -419,13 +434,14 @@ namespace CurrencyTransactions
         private System.Windows.Forms.Button btnaccountmovement;
         private System.Windows.Forms.Button btninvestments;
         private System.Windows.Forms.Label lblbalance;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnprocess;
         private System.Windows.Forms.TextBox txtquantity;
         private System.Windows.Forms.RadioButton rbtnsell;
         private System.Windows.Forms.RadioButton rbtnbuy;
         private System.Windows.Forms.ComboBox cmbxcurrency;
         private System.Windows.Forms.Label lblwelcome;
+        private System.Windows.Forms.Button btnwallet;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }
 
