@@ -30,6 +30,7 @@ namespace CurrencyTransactions
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            loginCheck(user);
             timer1_Tick(sender, e);
             timer1.Enabled = true;
             timerInterval(40000);
@@ -65,7 +66,7 @@ namespace CurrencyTransactions
         {
             Login frm = new Login();
             frm.Show();
-            this.Hide();
+            Hide();
             
         }
 
@@ -73,7 +74,44 @@ namespace CurrencyTransactions
         {
             Register frm = new Register();
             frm.Show();
-            this.Hide();
+            Hide();
+        }
+
+        private void loginCheck(User user)
+        {
+            if (user.mail != null)
+            {
+                embedData(user);
+
+                grptrade.Visible = true;
+                pctrbxunlogin.Visible = true;
+                labell.Visible = true;
+                lblwelcome.Visible = true;
+                btngiris.Visible = false;
+                lblor.Visible = false;
+                linkLabel1.Visible = false;           
+            }
+            else
+            {
+                grptrade.Visible = false;
+                pctrbxunlogin.Visible = false;
+                labell.Visible = false;
+                lblwelcome.Visible = false;
+                btngiris.Visible = true;
+                lblor.Visible = true;
+                linkLabel1.Visible = true;
+            }
+        }
+
+        private void pctrbxunlogin_Click(object sender, EventArgs e)
+        {
+            user = new User();
+            loginCheck(user);
+        }
+
+        private void embedData(User user)
+        {
+            lblwelcome.Text = user.ad;
         }
     }
 }
