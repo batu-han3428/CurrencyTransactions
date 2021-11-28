@@ -32,27 +32,29 @@ namespace dövizAlimSatim.Views.Wallet
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wallet));
             this.grpwallet = new System.Windows.Forms.GroupBox();
-            this.lblamound = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.pctrbxunlogin = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbbuy = new System.Windows.Forms.TabPage();
-            this.tbsell = new System.Windows.Forms.TabPage();
-            this.txtpush = new System.Windows.Forms.TextBox();
             this.btnpush = new System.Windows.Forms.Button();
+            this.txtpush = new System.Windows.Forms.TextBox();
+            this.tbsell = new System.Windows.Forms.TabPage();
             this.btnpull = new System.Windows.Forms.Button();
             this.txtpull = new System.Windows.Forms.TextBox();
-            this.pctrbxunlogin = new System.Windows.Forms.PictureBox();
+            this.lblamound = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblwarning = new System.Windows.Forms.Label();
             this.grpwallet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxunlogin)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tbbuy.SuspendLayout();
             this.tbsell.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctrbxunlogin)).BeginInit();
             this.SuspendLayout();
             // 
             // grpwallet
             // 
             this.grpwallet.BackColor = System.Drawing.Color.Transparent;
+            this.grpwallet.Controls.Add(this.lblwarning);
             this.grpwallet.Controls.Add(this.pctrbxunlogin);
             this.grpwallet.Controls.Add(this.tabControl1);
             this.grpwallet.Controls.Add(this.lblamound);
@@ -65,30 +67,21 @@ namespace dövizAlimSatim.Views.Wallet
             this.grpwallet.TabIndex = 12;
             this.grpwallet.TabStop = false;
             this.grpwallet.Text = "Cüzdan";
+            this.grpwallet.Enter += new System.EventHandler(this.grpwallet_Enter);
             // 
-            // lblamound
+            // pctrbxunlogin
             // 
-            this.lblamound.AutoSize = true;
-            this.lblamound.BackColor = System.Drawing.Color.Transparent;
-            this.lblamound.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblamound.ForeColor = System.Drawing.Color.White;
-            this.lblamound.Location = new System.Drawing.Point(136, 62);
-            this.lblamound.Name = "lblamound";
-            this.lblamound.Size = new System.Drawing.Size(42, 19);
-            this.lblamound.TabIndex = 14;
-            this.lblamound.Text = "0TL";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(29, 57);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 24);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Bakiye:";
+            this.pctrbxunlogin.BackColor = System.Drawing.Color.Transparent;
+            this.pctrbxunlogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pctrbxunlogin.Image = ((System.Drawing.Image)(resources.GetObject("pctrbxunlogin.Image")));
+            this.pctrbxunlogin.Location = new System.Drawing.Point(355, 20);
+            this.pctrbxunlogin.Name = "pctrbxunlogin";
+            this.pctrbxunlogin.Size = new System.Drawing.Size(43, 40);
+            this.pctrbxunlogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctrbxunlogin.TabIndex = 19;
+            this.pctrbxunlogin.TabStop = false;
+            this.toolTip1.SetToolTip(this.pctrbxunlogin, "Geri");
+            this.pctrbxunlogin.Click += new System.EventHandler(this.pctrbxunlogin_Click);
             // 
             // tabControl1
             // 
@@ -112,6 +105,7 @@ namespace dövizAlimSatim.Views.Wallet
             this.tbbuy.BackColor = System.Drawing.Color.White;
             this.tbbuy.Controls.Add(this.btnpush);
             this.tbbuy.Controls.Add(this.txtpush);
+            this.tbbuy.Cursor = System.Windows.Forms.Cursors.Default;
             this.tbbuy.ForeColor = System.Drawing.Color.White;
             this.tbbuy.Location = new System.Drawing.Point(4, 45);
             this.tbbuy.Name = "tbbuy";
@@ -119,6 +113,27 @@ namespace dövizAlimSatim.Views.Wallet
             this.tbbuy.Size = new System.Drawing.Size(330, 236);
             this.tbbuy.TabIndex = 0;
             this.tbbuy.Text = "Yatır";
+            // 
+            // btnpush
+            // 
+            this.btnpush.BackColor = System.Drawing.Color.Transparent;
+            this.btnpush.Font = new System.Drawing.Font("Yu Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnpush.ForeColor = System.Drawing.Color.Brown;
+            this.btnpush.Location = new System.Drawing.Point(48, 146);
+            this.btnpush.Name = "btnpush";
+            this.btnpush.Size = new System.Drawing.Size(232, 31);
+            this.btnpush.TabIndex = 23;
+            this.btnpush.Text = "Tamamla";
+            this.btnpush.UseVisualStyleBackColor = false;
+            this.btnpush.Click += new System.EventHandler(this.btnpush_Click);
+            // 
+            // txtpush
+            // 
+            this.txtpush.BackColor = System.Drawing.Color.Red;
+            this.txtpush.Location = new System.Drawing.Point(48, 61);
+            this.txtpush.Name = "txtpush";
+            this.txtpush.Size = new System.Drawing.Size(232, 41);
+            this.txtpush.TabIndex = 0;
             // 
             // tbsell
             // 
@@ -132,26 +147,6 @@ namespace dövizAlimSatim.Views.Wallet
             this.tbsell.Size = new System.Drawing.Size(330, 236);
             this.tbsell.TabIndex = 1;
             this.tbsell.Text = "Çek";
-            // 
-            // txtpush
-            // 
-            this.txtpush.BackColor = System.Drawing.Color.Red;
-            this.txtpush.Location = new System.Drawing.Point(48, 61);
-            this.txtpush.Name = "txtpush";
-            this.txtpush.Size = new System.Drawing.Size(232, 41);
-            this.txtpush.TabIndex = 0;
-            // 
-            // btnpush
-            // 
-            this.btnpush.BackColor = System.Drawing.Color.Transparent;
-            this.btnpush.Font = new System.Drawing.Font("Yu Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnpush.ForeColor = System.Drawing.Color.Brown;
-            this.btnpush.Location = new System.Drawing.Point(48, 146);
-            this.btnpush.Name = "btnpush";
-            this.btnpush.Size = new System.Drawing.Size(232, 31);
-            this.btnpush.TabIndex = 23;
-            this.btnpush.Text = "Tamamla";
-            this.btnpush.UseVisualStyleBackColor = false;
             // 
             // btnpull
             // 
@@ -173,19 +168,39 @@ namespace dövizAlimSatim.Views.Wallet
             this.txtpull.Size = new System.Drawing.Size(232, 41);
             this.txtpull.TabIndex = 24;
             // 
-            // pctrbxunlogin
+            // lblamound
             // 
-            this.pctrbxunlogin.BackColor = System.Drawing.Color.Transparent;
-            this.pctrbxunlogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pctrbxunlogin.Image = ((System.Drawing.Image)(resources.GetObject("pctrbxunlogin.Image")));
-            this.pctrbxunlogin.Location = new System.Drawing.Point(355, 20);
-            this.pctrbxunlogin.Name = "pctrbxunlogin";
-            this.pctrbxunlogin.Size = new System.Drawing.Size(43, 40);
-            this.pctrbxunlogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pctrbxunlogin.TabIndex = 19;
-            this.pctrbxunlogin.TabStop = false;
-            this.toolTip1.SetToolTip(this.pctrbxunlogin, "Geri");
-            this.pctrbxunlogin.Click += new System.EventHandler(this.pctrbxunlogin_Click);
+            this.lblamound.AutoSize = true;
+            this.lblamound.BackColor = System.Drawing.Color.Transparent;
+            this.lblamound.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblamound.ForeColor = System.Drawing.Color.White;
+            this.lblamound.Location = new System.Drawing.Point(136, 78);
+            this.lblamound.Name = "lblamound";
+            this.lblamound.Size = new System.Drawing.Size(42, 19);
+            this.lblamound.TabIndex = 14;
+            this.lblamound.Text = "0TL";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(29, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 24);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Bakiye:";
+            // 
+            // lblwarning
+            // 
+            this.lblwarning.AutoSize = true;
+            this.lblwarning.BackColor = System.Drawing.Color.Transparent;
+            this.lblwarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblwarning.Location = new System.Drawing.Point(42, 40);
+            this.lblwarning.Name = "lblwarning";
+            this.lblwarning.Size = new System.Drawing.Size(0, 20);
+            this.lblwarning.TabIndex = 20;
             // 
             // Wallet
             // 
@@ -204,12 +219,12 @@ namespace dövizAlimSatim.Views.Wallet
             this.Text = "Cüzdan";
             this.grpwallet.ResumeLayout(false);
             this.grpwallet.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctrbxunlogin)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tbbuy.ResumeLayout(false);
             this.tbbuy.PerformLayout();
             this.tbsell.ResumeLayout(false);
             this.tbsell.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctrbxunlogin)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -228,5 +243,6 @@ namespace dövizAlimSatim.Views.Wallet
         private System.Windows.Forms.TextBox txtpull;
         private System.Windows.Forms.PictureBox pctrbxunlogin;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label lblwarning;
     }
 }

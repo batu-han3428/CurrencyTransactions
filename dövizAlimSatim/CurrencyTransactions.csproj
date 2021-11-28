@@ -91,6 +91,7 @@
     <Compile Include="DTO\resetPassword\newPassword.cs" />
     <Compile Include="DTO\resetPassword\resetPassword.cs" />
     <Compile Include="DTO\resetPassword\resetPasswordResponce1.cs" />
+    <Compile Include="DTO\Wallet\WalletDTO.cs" />
     <Compile Include="DTO\yeniDoviz\IcerikDoviz.cs" />
     <Compile Include="DTO\yeniDoviz\yeniDoviz.cs" />
     <Compile Include="Methods\EmailHelper.cs" />

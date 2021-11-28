@@ -47,7 +47,9 @@ namespace Api
 
             services.AddScoped<IAccountServices, AccountServices>();
             services.AddScoped<IAccountRepository, AccountRepository>();
-            
+            services.AddScoped<IWalletServices, WalletServices>();
+            services.AddScoped<IWalletRepository, WalletRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

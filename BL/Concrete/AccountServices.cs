@@ -48,5 +48,6 @@ namespace BL.Concrete
         {
             return _AccountRepository.newPassword(user);
         }
+     
     }
 }

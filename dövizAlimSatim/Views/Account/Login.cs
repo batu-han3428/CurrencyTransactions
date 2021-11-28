@@ -52,7 +52,7 @@ namespace dövizAlimSatim.Views.Account
                 if (result == "\"Mail veya Parola hatalı\"")
                 {
                     lblwarning.Text = "";
-                    lblwarning.Text = "Mail veya Parola hatalı";
+                    lblwarning.Text = "● Mail veya Parola hatalı";
                 }
                 else
                 {

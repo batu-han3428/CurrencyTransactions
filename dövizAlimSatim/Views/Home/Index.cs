@@ -22,9 +22,15 @@ namespace CurrencyTransactions
     public partial class Index : Form
     {
         public User user;
+        public balance balance;
+        public currencyTransactions currencyTransactions;
+        public movements movements;
         public Index()
         {
             user = new User();
+            balance = new balance();
+            currencyTransactions = new currencyTransactions();
+            movements = new movements();
             InitializeComponent();
         }
         
@@ -46,14 +52,6 @@ namespace CurrencyTransactions
      
         private void timerInterval(int interval) {        
             timer1.Interval = interval;
-        }
-
-        private void labelsCenter()
-        {
-            foreach (Control item in grpkur.Controls)
-            {
-                item.Left += 23;
-            }
         }
         
         private void labelsDataTransfer(yeniDoviz result)
@@ -80,7 +78,7 @@ namespace CurrencyTransactions
 
         private void loginCheck(User user)
         {
-            if (user.mail != null)
+            if (user.id != 0)
             {
                 embedData(user);
 
@@ -118,9 +116,44 @@ namespace CurrencyTransactions
 
         private void btnwallet_Click(object sender, EventArgs e)
         {
+            map(user);
+
             Wallet frm = new Wallet();
+            frm.user.id = user.id;
+            frm.user.ad = user.ad;
+            frm.user.soyad = user.soyad;
+            frm.user.mail = user.mail;
+            frm.user.parola = user.parola;
+            frm.user.kayitTarihi = user.kayitTarihi;
+            frm.user.tc = user.tc;
+            frm.user.balance = balance;
+            frm.user.balance.movements = movements;
+            frm.user.balance.movements.currencyTransactions = currencyTransactions;
+
+
             frm.Show();
             Hide();
+        }
+
+        private void map(User loginUser)
+        {
+            balance.userID = loginUser.balance.userID;
+            balance.amount = loginUser.balance.amount;
+
+
+            movements.id = loginUser.balance.movements.id;
+            movements.userID = loginUser.balance.movements.userID;
+            movements.wallet = loginUser.balance.movements.wallet;
+            movements.currency = loginUser.balance.movements.currency;
+            movements.buySell = loginUser.balance.movements.buySell;
+            movements.amount = loginUser.balance.movements.amount;
+            movements.date = loginUser.balance.movements.date;
+
+
+            currencyTransactions.userID = loginUser.balance.movements.currencyTransactions.userID;
+            currencyTransactions.dollar = loginUser.balance.movements.currencyTransactions.dollar;
+            currencyTransactions.euro = loginUser.balance.movements.currencyTransactions.euro;
+            currencyTransactions.pound = loginUser.balance.movements.currencyTransactions.pound;
         }
     }
 }

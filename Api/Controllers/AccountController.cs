@@ -96,5 +96,6 @@ namespace Api.Controllers
                 return BadRequest(newPassword);
             }
         }
+       
     }
 }
