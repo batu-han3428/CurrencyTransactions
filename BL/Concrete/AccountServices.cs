@@ -34,8 +34,7 @@ namespace BL.Concrete
         }
 
         public string register(User user)
-        {
-            
+        {          
             return _AccountRepository.register(user);
         }
 
