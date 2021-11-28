@@ -170,6 +170,7 @@ namespace dövizAlimSatim.Views.Wallet
             this.btnpull.TabIndex = 25;
             this.btnpull.Text = "Tamamla";
             this.btnpull.UseVisualStyleBackColor = false;
+            this.btnpull.Click += new System.EventHandler(this.btnpull_Click);
             // 
             // txtpull
             // 
@@ -178,6 +179,7 @@ namespace dövizAlimSatim.Views.Wallet
             this.txtpull.Name = "txtpull";
             this.txtpull.Size = new System.Drawing.Size(232, 41);
             this.txtpull.TabIndex = 24;
+            this.txtpull.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpull_KeyPress);
             // 
             // lblamound
             // 
@@ -218,6 +220,7 @@ namespace dövizAlimSatim.Views.Wallet
             this.Name = "Wallet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cüzdan";
+            this.Load += new System.EventHandler(this.Wallet_Load);
             this.grpwallet.ResumeLayout(false);
             this.grpwallet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxunlogin)).EndInit();

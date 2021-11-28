@@ -55,20 +55,13 @@ namespace dövizAlimSatim.Views.Wallet
         private void grpwallet_Enter(object sender, EventArgs e)
         {
             lblamound.Text = user.balance.amount+"TL";
+            wallet.amount = user.balance.amount;
         }
 
         private void map(User loginUser)
         {
             balance.userID = loginUser.balance.userID;
-            if (wallet.amount > 0)
-            {
-                balance.amount = wallet.amount;
-            }
-            else
-            {
-                balance.amount = loginUser.balance.amount;
-            }
-            
+            balance.amount = wallet.amount;
 
 
             movements.id = loginUser.balance.movements.id;
@@ -121,6 +114,57 @@ namespace dövizAlimSatim.Views.Wallet
         private void txtpush_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtpull_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private async void btnpull_Click(object sender, EventArgs e)
+        {
+            lblwarning.Text = "";
+
+            if (txtpull.Text == "")
+            {
+                lblwarning.Text = "● Bu alan boş geçilemez..";
+            }else if (txtpull.Text == "0")
+            {
+                lblwarning.Text = "● Bakiye yetersiz..";
+            }
+            else
+            {
+                string veri = lblamound.Text.Substring(0, lblamound.Text.Length - 2);
+
+                if (float.Parse(veri, CultureInfo.InvariantCulture.NumberFormat) < float.Parse(txtpull.Text, CultureInfo.InvariantCulture.NumberFormat))
+                {
+                    lblwarning.Text = "● Bakiye yetersiz..";
+                }
+                else { 
+                    wallet.userID = user.id;
+                    wallet.amount = float.Parse(veri, CultureInfo.InvariantCulture.NumberFormat) - float.Parse(txtpull.Text, CultureInfo.InvariantCulture.NumberFormat);
+
+                    var result = await Api<WalletDTO>.pushDataAsync("https://localhost:44391/api/Wallet/wallet", wallet);
+
+                    wallet = Json_Convert<WalletDTO>.deserializeProcess(Api<WalletDTO>.apiFormat(result));
+
+                    if (wallet != null)
+                    {
+                        lblamound.Text = wallet.amount + "TL";
+                        txtpush.Text = "";
+                        MessageBox.Show("Para çekme işlemi gerçekleşti");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Beklenmeyen bir hata oldu");
+                    }
+                }
+            }
+        }
+
+        private void Wallet_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
