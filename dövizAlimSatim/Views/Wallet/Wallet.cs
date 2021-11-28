@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,7 +60,15 @@ namespace dövizAlimSatim.Views.Wallet
         private void map(User loginUser)
         {
             balance.userID = loginUser.balance.userID;
-            balance.amount = loginUser.balance.amount;
+            if (wallet.amount > 0)
+            {
+                balance.amount = wallet.amount;
+            }
+            else
+            {
+                balance.amount = loginUser.balance.amount;
+            }
+            
 
 
             movements.id = loginUser.balance.movements.id;
@@ -87,11 +96,31 @@ namespace dövizAlimSatim.Views.Wallet
             }
             else
             {
-                wallet.userID = user.id;
-                wallet.amount = user.balance.amount;
+                string veri = lblamound.Text.Substring(0, lblamound.Text.Length - 2);
 
-                var result = await Api<WalletDTO>.pushDataAsync("https://localhost:44391/api/Account/login", wallet);
+                wallet.userID = user.id;
+                wallet.amount = float.Parse(veri, CultureInfo.InvariantCulture.NumberFormat) + float.Parse(txtpush.Text, CultureInfo.InvariantCulture.NumberFormat);
+
+                var result = await Api<WalletDTO>.pushDataAsync("https://localhost:44391/api/Wallet/wallet", wallet);
+
+                wallet = Json_Convert<WalletDTO>.deserializeProcess(Api<WalletDTO>.apiFormat(result));
+
+                if (wallet != null)
+                {                   
+                    lblamound.Text = wallet.amount + "TL";
+                    txtpush.Text = "";
+                    MessageBox.Show("Para yükleme işlemi gerçekleşti");
+                }
+                else
+                {
+                    MessageBox.Show("Beklenmeyen bir hata oldu");
+                }
             }
+        }
+
+        private void txtpush_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace dövizAlimSatim.Views.Wallet
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wallet));
             this.grpwallet = new System.Windows.Forms.GroupBox();
+            this.lblwarning = new System.Windows.Forms.Label();
             this.pctrbxunlogin = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbbuy = new System.Windows.Forms.TabPage();
@@ -43,7 +44,6 @@ namespace dövizAlimSatim.Views.Wallet
             this.lblamound = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.lblwarning = new System.Windows.Forms.Label();
             this.grpwallet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctrbxunlogin)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -68,6 +68,16 @@ namespace dövizAlimSatim.Views.Wallet
             this.grpwallet.TabStop = false;
             this.grpwallet.Text = "Cüzdan";
             this.grpwallet.Enter += new System.EventHandler(this.grpwallet_Enter);
+            // 
+            // lblwarning
+            // 
+            this.lblwarning.AutoSize = true;
+            this.lblwarning.BackColor = System.Drawing.Color.Transparent;
+            this.lblwarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblwarning.Location = new System.Drawing.Point(42, 40);
+            this.lblwarning.Name = "lblwarning";
+            this.lblwarning.Size = new System.Drawing.Size(0, 20);
+            this.lblwarning.TabIndex = 20;
             // 
             // pctrbxunlogin
             // 
@@ -134,6 +144,7 @@ namespace dövizAlimSatim.Views.Wallet
             this.txtpush.Name = "txtpush";
             this.txtpush.Size = new System.Drawing.Size(232, 41);
             this.txtpush.TabIndex = 0;
+            this.txtpush.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtpush_KeyPress);
             // 
             // tbsell
             // 
@@ -191,16 +202,6 @@ namespace dövizAlimSatim.Views.Wallet
             this.label1.Size = new System.Drawing.Size(101, 24);
             this.label1.TabIndex = 11;
             this.label1.Text = "Bakiye:";
-            // 
-            // lblwarning
-            // 
-            this.lblwarning.AutoSize = true;
-            this.lblwarning.BackColor = System.Drawing.Color.Transparent;
-            this.lblwarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblwarning.Location = new System.Drawing.Point(42, 40);
-            this.lblwarning.Name = "lblwarning";
-            this.lblwarning.Size = new System.Drawing.Size(0, 20);
-            this.lblwarning.TabIndex = 20;
             // 
             // Wallet
             // 
