@@ -3,6 +3,7 @@ using dövizAlimSatim.DTO.yeniDoviz;
 using dövizAlimSatim.Methods;
 using dövizAlimSatim.ViewModels;
 using dövizAlimSatim.Views.Account;
+using dövizAlimSatim.Views.Wallet;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -113,6 +114,13 @@ namespace CurrencyTransactions
         {
             lblwelcome.Text = user.ad;
             lblbalance.Text = user.balance.amount + "TL";
+        }
+
+        private void btnwallet_Click(object sender, EventArgs e)
+        {
+            Wallet frm = new Wallet();
+            frm.Show();
+            Hide();
         }
     }
 }

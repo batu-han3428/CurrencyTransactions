@@ -257,6 +257,7 @@ namespace CurrencyTransactions
             this.btnwallet.TabIndex = 22;
             this.btnwallet.Text = "Cüzdan";
             this.btnwallet.UseVisualStyleBackColor = false;
+            this.btnwallet.Click += new System.EventHandler(this.btnwallet_Click);
             // 
             // btnaccountmovement
             // 
